@@ -1,633 +1,745 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zalstudio. Creative Agency</title>
+  <title>Zalstudio. — Social Media & Design Agency</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --yellow: #FFD700;
-      --yellow-dark: #e6c200;
-      --black: #0a0a0a;
-      --black-soft: #111111;
-      --white: #ffffff;
-      --gray: #888888;
-      --radius: 16px;
+      --y: #FFD700;
+      --yd: #e6c200;
+      --bk: #0a0a0a;
+      --bk2: #111111;
+      --r: 16px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--black);
-      color: var(--white);
+      background: var(--bk);
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* ── NAVBAR ── */
+    /* ══ NAVBAR ══ */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,215,0,0.12);
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(10,10,10,0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,215,0,0.1);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
     }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--yellow);
-      letter-spacing: -0.5px;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--white); }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-logo { font-size: 1.45rem; font-weight: 900; color: var(--y); letter-spacing: -.5px; text-decoration: none; }
+    .nav-logo span { color: #fff; }
+    .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none;
-      color: var(--white);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      position: relative;
-      transition: color 0.2s;
+      text-decoration: none; color: rgba(255,255,255,.72);
+      font-size: .88rem; font-weight: 500; position: relative; transition: color .2s;
     }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--yellow);
-      transition: width 0.25s ease;
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--y); transition: width .25s;
     }
-    .nav-links a:hover { color: var(--yellow); }
+    .nav-links a:hover { color: var(--y); }
     .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--y) !important; color: #0a0a0a !important;
+      font-weight: 700 !important; padding: 8px 20px;
+      border-radius: 100px; transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--yd) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
 
-    /* ── HERO ── */
+    /* ══ SHARED ══ */
+    section { padding: 96px 6%; }
+
+    .tag {
+      display: inline-block; font-size: .7rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--y);
+      background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.18);
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 18px;
+    }
+    .sec-title {
+      font-size: clamp(1.9rem,4vw,3rem); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 14px;
+    }
+    .y { color: var(--y); }
+    .sec-desc {
+      color: rgba(255,255,255,.5); font-size: 1rem;
+      line-height: 1.75; max-width: 500px; margin-bottom: 52px;
+    }
+
+    /* ══ HERO ══ */
     #home {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 5% 80px;
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(255,215,0,0.28) 0%, transparent 70%),
-                  linear-gradient(170deg, #0a0a0a 0%, #111111 40%, #1a1500 100%);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      padding: 100px 6% 80px; position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 50% at 0% 60%, rgba(255,215,0,.12) 0%, transparent 65%),
+        linear-gradient(160deg, #0a0a0a 0%, #111 50%, #0f0f00 100%);
     }
-
-    /* decorative circles */
     #home::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,215,0,0.07);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,215,0,.035) 1px, transparent 1px);
+      background-size: 32px 32px; pointer-events: none;
     }
-    #home::after {
-      content: '';
-      position: absolute;
-      width: 900px; height: 900px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,215,0,0.04);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
+    .hero-content { position: relative; z-index: 1; }
     .hero-badge {
-      display: inline-block;
-      background: rgba(255,215,0,0.1);
-      border: 1px solid rgba(255,215,0,0.3);
-      color: var(--yellow);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      animation: fadeUp 0.6s ease both;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.22);
+      color: var(--y); font-size: .75rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+      animation: fadeUp .6s ease both;
     }
-
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--y); animation: pulse 1.8s infinite;
+    }
     .hero-title {
-      font-size: clamp(2.6rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin-bottom: 22px;
-      animation: fadeUp 0.7s 0.1s ease both;
+      font-size: clamp(2rem,4vw,3.8rem); font-weight: 900;
+      line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
+      animation: fadeUp .7s .1s ease both;
     }
-    .hero-title .accent { color: var(--yellow); }
-
     .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      font-weight: 400;
-      color: rgba(255,255,255,0.6);
-      max-width: 520px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
-      animation: fadeUp 0.7s 0.2s ease both;
+      font-size: 1rem; color: rgba(255,255,255,.58);
+      line-height: 1.75; margin-bottom: 38px; max-width: 480px;
+      animation: fadeUp .7s .2s ease both;
     }
+    .hero-btns {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--y); color: #0a0a0a;
+      font-family: 'Poppins',sans-serif; font-weight: 700; font-size: .95rem;
+      padding: 14px 32px; border-radius: 100px; text-decoration: none;
+      box-shadow: 0 0 36px rgba(255,215,0,.28);
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn-solid:hover { background: var(--yd); transform: translateY(-3px); box-shadow: 0 8px 44px rgba(255,215,0,.42); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; border: 1.5px solid rgba(255,215,0,.35);
+      color: var(--y); font-family: 'Poppins',sans-serif;
+      font-weight: 600; font-size: .95rem;
+      padding: 14px 28px; border-radius: 100px; text-decoration: none;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(255,215,0,.08); border-color: var(--y); transform: translateY(-3px); }
+    .hero-img { position: relative; z-index: 1; animation: fadeUp .8s .25s ease both; }
+    .hero-img img {
+      width: 100%; border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,215,0,.1);
+      object-fit: cover; aspect-ratio: 4/3; display: block;
+    }
+    .hero-float {
+      position: absolute; bottom: -16px; left: -16px;
+      background: var(--y); color: #0a0a0a;
+      font-weight: 800; font-size: .82rem;
+      padding: 12px 18px; border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(255,215,0,.35); line-height: 1.3;
+    }
+    .hero-float span { font-size: 1.3rem; display: block; }
 
-    .btn-primary {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 16px 42px;
-      border-radius: 100px;
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      box-shadow: 0 0 40px rgba(255,215,0,0.3);
-      animation: fadeUp 0.7s 0.3s ease both;
+    /* ══ PROBLEM ══ */
+    #problem {
+      background: var(--bk2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
-    .btn-primary:hover {
-      background: var(--yellow-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 50px rgba(255,215,0,0.45);
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .problem-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px; padding: 18px 22px;
+      font-size: .93rem; color: rgba(255,255,255,.75);
+      transition: border-color .2s, background .2s;
     }
+    .problem-list li:hover { border-color: rgba(255,215,0,.2); background: rgba(255,215,0,.03); }
+    .p-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+    .p-li-title { font-weight: 700; display: block; margin-bottom: 3px; }
+    .p-li-sub { font-size: .82rem; color: rgba(255,255,255,.4); }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 100px 5%; }
-
-    .section-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .section-desc {
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 56px;
-    }
-
-    /* ── PORTFOLIO ── */
-    #portfolio { background: var(--black-soft); }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .portfolio-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4/3;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-      background: #1a1a1a;
-    }
-
-    .portfolio-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-
-    .portfolio-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .portfolio-card:hover img { transform: scale(1.08); }
-    .portfolio-card:hover::after { opacity: 1; }
-
-    /* ── PRICING ── */
-    #pricing { background: var(--black); }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      align-items: stretch;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,215,0,0.12);
-    }
-
-    .price-card {
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: background 0.25s;
-      border-right: 1px solid rgba(255,215,0,0.08);
-    }
-    .price-card:last-child { border-right: none; }
-    .price-card:hover { background: #161600; }
-
-    .price-header {
-      background: #0a0a0a;
-      padding: 36px 32px 28px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,215,0,0.08);
-    }
-
-    .price-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-
-    .price-tier {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 14px;
-    }
-
-    .price-amount {
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--yellow);
-      letter-spacing: -2px;
-      line-height: 1;
-    }
-    .price-amount sub {
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--yellow); vertical-align: baseline; letter-spacing: 0;
-    }
-    .price-amount small {
-      font-size: 0.85rem; font-weight: 400;
-      color: rgba(255,255,255,0.35); letter-spacing: 0;
-    }
-
-    .price-body {
-      padding: 32px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .price-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      flex: 1;
-    }
-
-    .price-features li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .price-features li:last-child { border-bottom: none; }
-
-    .price-features li .chk {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px; height: 20px;
-      background: rgba(255,215,0,0.15);
-      color: var(--yellow);
-      border-radius: 50%;
-      font-size: 0.65rem;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .price-cta {
-      display: block;
-      margin-top: 28px;
-      text-align: center;
-      background: rgba(255,215,0,0.08);
-      border: 1px solid rgba(255,215,0,0.2);
-      color: var(--yellow);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 13px 20px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
-    }
-    .price-cta:hover {
-      background: var(--yellow);
-      color: var(--black);
-      transform: translateY(-2px);
-    }
-
-    /* SILVER highlight */
-    .price-card.featured {
-      background: #161400;
-    }
-    .price-card.featured:hover { background: #1c1900; }
-
-    .price-card.featured .price-header {
-      background: linear-gradient(160deg, #0f0e00 0%, #1a1700 100%);
-    }
-    .price-card.featured .price-tier { color: rgba(255,215,0,0.4); }
-
-    .featured-badge {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--black);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 100px;
-      margin-bottom: 12px;
-    }
-
-    .price-card.featured .price-cta {
-      background: var(--yellow);
-      color: var(--black);
-      border-color: var(--yellow);
-      box-shadow: 0 4px 30px rgba(255,215,0,0.3);
-    }
-    .price-card.featured .price-cta:hover {
-      background: var(--yellow-dark);
-      box-shadow: 0 8px 40px rgba(255,215,0,0.45);
-    }
-    .price-card.featured .price-features li .chk {
-      background: rgba(255,215,0,0.22);
-    }
-
-    /* ── CTA ── */
-    #cta {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1500 50%, #0a0a0a 100%);
-      text-align: center;
-      padding: 120px 5%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #cta::before {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .cta-title {
-      font-size: clamp(1.8rem, 4vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -1px;
+    .sol-box {
+      background: linear-gradient(135deg, rgba(255,215,0,.1), rgba(255,215,0,.04));
+      border: 1px solid rgba(255,215,0,.2); border-radius: 18px; padding: 30px;
       margin-bottom: 18px;
-      line-height: 1.2;
     }
-    .cta-title .accent { color: var(--yellow); }
-
-    .cta-sub {
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      margin-bottom: 42px;
+    .sol-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--y); margin-bottom: 10px; }
+    .sol-box p { font-size: .93rem; color: rgba(255,255,255,.7); line-height: 1.75; }
+    .stats-mini {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
     }
+    .stat-box {
+      background: rgba(255,215,0,.05); border: 1px solid rgba(255,215,0,.1);
+      border-radius: 14px; padding: 18px; text-align: center;
+    }
+    .stat-box strong { font-size: 1.7rem; font-weight: 900; color: var(--y); display: block; }
+    .stat-box span { font-size: .78rem; color: rgba(255,255,255,.42); margin-top: 3px; display: block; }
 
+    /* ══ HASIL ══ */
+    #hasil { background: var(--bk); }
+    .hasil-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .h-card {
+      background: rgba(255,215,0,.04); border: 1px solid rgba(255,215,0,.1);
+      border-radius: 18px; padding: 30px 22px; text-align: center;
+      transition: border-color .25s, transform .25s, background .25s;
+    }
+    .h-card:hover { border-color: rgba(255,215,0,.3); background: rgba(255,215,0,.07); transform: translateY(-6px); }
+    .h-card .ic { font-size: 2.2rem; margin-bottom: 14px; }
+    .h-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: 8px; }
+    .h-card p { font-size: .82rem; color: rgba(255,255,255,.42); line-height: 1.6; }
+
+    /* ══ SERVICES ══ */
+    #services { background: var(--bk2); }
+    .svc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .svc-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); object-fit: cover; aspect-ratio: 4/3; }
+    .svc-list { display: flex; flex-direction: column; gap: 16px; }
+    .svc-item {
+      display: flex; align-items: center; gap: 20px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px; padding: 22px 24px;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .svc-item:hover { border-color: rgba(255,215,0,.25); background: rgba(255,215,0,.04); transform: translateX(6px); }
+    .svc-num { font-size: 1.6rem; font-weight: 900; color: rgba(255,215,0,.18); flex-shrink: 0; line-height: 1; }
+    .svc-info h3 { font-size: .97rem; font-weight: 700; margin-bottom: 4px; }
+    .svc-info p { font-size: .82rem; color: rgba(255,255,255,.42); line-height: 1.55; }
+
+    /* ══ PORTFOLIO ══ */
+    #portfolio { background: var(--bk); }
+    .port-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .pc {
+      border-radius: var(--r); overflow: hidden; position: relative;
+      aspect-ratio: 4/3; background: #1a1a1a;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    }
+    .pc img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+    }
+    .pc::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 55%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .pc:hover img { transform: scale(1.07); }
+    .pc:hover::after { opacity: 1; }
+    .pc.wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+    /* ══ PRICING ══ */
+    #pricing { background: var(--bk2); }
+    .pri-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; align-items: stretch;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+      border: 1px solid rgba(255,215,0,.12);
+    }
+    .pri-card {
+      background: #111; display: flex; flex-direction: column;
+      border-right: 1px solid rgba(255,215,0,.08); transition: background .25s;
+    }
+    .pri-card:last-child { border-right: none; }
+    .pri-card:hover { background: #161600; }
+    .pri-head {
+      background: #0a0a0a; padding: 36px 32px 28px;
+      text-align: center; border-bottom: 1px solid rgba(255,215,0,.08);
+    }
+    .pri-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .pri-tier { font-size: .68rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 12px; }
+    .pri-price { font-size: 2.8rem; font-weight: 900; color: var(--y); letter-spacing: -2px; line-height: 1; }
+    .pri-price sub { font-size: 1rem; font-weight: 700; color: var(--y); vertical-align: baseline; letter-spacing: 0; }
+    .pri-price small { font-size: .8rem; font-weight: 400; color: rgba(255,255,255,.3); letter-spacing: 0; }
+    .pri-body { padding: 30px; flex: 1; display: flex; flex-direction: column; }
+    .pri-feats { list-style: none; flex: 1; }
+    .pri-feats li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.78);
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .pri-feats li:last-child { border-bottom: none; }
+    .chk {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px;
+      background: rgba(255,215,0,.14); color: var(--y);
+      border-radius: 50%; font-size: .62rem; font-weight: 900; flex-shrink: 0;
+    }
+    .pri-cta {
+      display: block; margin-top: 26px; text-align: center;
+      background: rgba(255,215,0,.07); border: 1px solid rgba(255,215,0,.2);
+      color: var(--y); font-family: 'Poppins',sans-serif;
+      font-size: .85rem; font-weight: 700;
+      padding: 13px 20px; border-radius: 100px; text-decoration: none;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .pri-cta:hover { background: var(--y); color: #0a0a0a; transform: translateY(-2px); }
+    /* Featured */
+    .pri-card.feat { background: #161400; }
+    .pri-card.feat:hover { background: #1c1900; }
+    .pri-card.feat .pri-head { background: linear-gradient(160deg, #0f0e00 0%, #1a1700 100%); }
+    .pri-card.feat .pri-tier { color: rgba(255,215,0,.4); }
+    .feat-badge {
+      display: inline-block; background: var(--y); color: #0a0a0a;
+      font-size: .62rem; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 14px; border-radius: 100px; margin-bottom: 10px;
+    }
+    .pri-card.feat .pri-cta { background: var(--y); color: #0a0a0a; box-shadow: 0 4px 28px rgba(255,215,0,.28); }
+    .pri-card.feat .pri-cta:hover { background: var(--yd); box-shadow: 0 8px 40px rgba(255,215,0,.42); }
+    .pri-card.feat .chk { background: rgba(255,215,0,.2); }
+
+    /* ══ TESTIMONI ══ */
+    #testimoni { background: var(--bk); }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .testi-card {
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 18px; padding: 30px;
+      transition: border-color .2s, background .2s;
+    }
+    .testi-card:hover { border-color: rgba(255,215,0,.2); background: rgba(255,215,0,.03); }
+    .testi-stars { color: var(--y); font-size: 1rem; margin-bottom: 14px; }
+    .testi-text { font-size: .95rem; line-height: 1.75; color: rgba(255,255,255,.8); margin-bottom: 22px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .t-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--y), #b8960a);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; color: #0a0a0a; flex-shrink: 0;
+    }
+    .t-name { font-weight: 700; font-size: .9rem; }
+    .t-role { font-size: .78rem; color: rgba(255,255,255,.38); }
+
+    /* ══ KEUNGGULAN ══ */
+    #keunggulan { background: var(--bk2); }
+    .keung-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .k-card {
+      background: rgba(255,215,0,.04); border: 1px solid rgba(255,215,0,.1);
+      border-radius: 18px; padding: 28px 20px; text-align: center;
+      transition: border-color .25s, transform .25s, background .25s;
+    }
+    .k-card:hover { border-color: rgba(255,215,0,.3); background: rgba(255,215,0,.08); transform: translateY(-5px); }
+    .k-card .ic { font-size: 2rem; margin-bottom: 14px; }
+    .k-card h3 { font-size: .93rem; font-weight: 700; margin-bottom: 8px; }
+    .k-card p { font-size: .82rem; color: rgba(255,255,255,.42); line-height: 1.6; }
+
+    /* ══ CTA FINAL ══ */
+    #cta-final {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1500 50%, #0a0a0a 100%);
+      text-align: center; padding: 120px 6%; position: relative; overflow: hidden;
+    }
+    #cta-final::before {
+      content: ''; position: absolute;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,215,0,.1) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+    }
+    .cta-title {
+      font-size: clamp(2rem,4vw,3.4rem); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.15;
+      margin-bottom: 16px; position: relative;
+    }
+    .cta-sub { color: rgba(255,255,255,.48); font-size: 1rem; margin-bottom: 44px; position: relative; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
     .btn-wa {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 16px 42px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      box-shadow: 0 0 40px rgba(255,215,0,0.3);
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      font-family: 'Poppins',sans-serif; font-weight: 700; font-size: 1rem;
+      padding: 16px 32px; border-radius: 100px; text-decoration: none;
+      box-shadow: 0 0 36px rgba(37,211,102,.3);
+      transition: transform .2s, box-shadow .2s;
     }
-    .btn-wa:hover {
-      background: var(--yellow-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 50px rgba(255,215,0,0.45);
-    }
+    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 8px 44px rgba(37,211,102,.45); }
+    .wa-icon { width: 20px; height: 20px; fill: #fff; }
 
-    /* WA icon (inline SVG via CSS) */
-    .wa-icon {
-      width: 22px; height: 22px;
-      fill: var(--black);
-    }
-
-    /* ── FOOTER ── */
+    /* ══ FOOTER ══ */
     footer {
-      background: #050505;
-      border-top: 1px solid rgba(255,215,0,0.08);
-      text-align: center;
-      padding: 32px 5%;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.85rem;
+      background: #050505; border-top: 1px solid rgba(255,215,0,.07);
+      text-align: center; padding: 30px 6%;
+      color: rgba(255,255,255,.28); font-size: .82rem;
     }
-    footer strong { color: var(--yellow); }
+    footer strong { color: var(--y); }
 
-    /* ── ANIMATIONS ── */
+    /* ══ ANIM ══ */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(26px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-        margin: 0 auto;
-        border-radius: 20px;
-      }
-      .price-card { border-right: none; border-bottom: 1px solid rgba(255,215,0,0.08); }
-      .price-card:last-child { border-bottom: none; }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(.8); }
     }
 
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 1024px) {
+      .hasil-grid { grid-template-columns: repeat(2,1fr); }
+      .keung-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 900px) {
+      #home { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-btns { justify-content: center; }
+      .hero-sub { margin: 0 auto 38px; }
+      #problem { grid-template-columns: 1fr; gap: 40px; }
+      .svc-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .port-grid { grid-template-columns: repeat(2,1fr); }
+      .pc.wide { grid-column: span 1; aspect-ratio: 4/3; }
+      .pri-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; border-radius: 20px; }
+      .pri-card { border-right: none; border-bottom: 1px solid rgba(255,215,0,.08); }
+      .pri-card:last-child { border-bottom: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 600px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 20px; }
-      .nav-links a { font-size: 0.8rem; }
+      section { padding: 72px 5%; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: .78rem; }
+      .port-grid { grid-template-columns: 1fr; }
+      .stats-mini { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <a href="#home" class="nav-logo">ZAL<span>STUDIO.</span></a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#pricing">Harga</a></li>
+<!-- NAVBAR -->
+<nav>
+  <a href="#home" class="nav-logo">ZAL<span>STUDIO.</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Layanan</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Harga</a></li>
+    <li><a href="https://wa.me/6282298707284" class="nav-cta" target="_blank" rel="noopener">Konsultasi Gratis</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ 1. HERO ══════════════ -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Social Media &amp; Design Agency
+    </div>
+    <h1 class="hero-title">
+      Kelola Sosial Media &amp; Design<br>
+      Tanpa Ribet,<br>
+      <span class="y">Kami Kerjakan Semua</span>
+    </h1>
+    <p class="hero-sub">
+      Kami membantu UMKM &amp; personal brand tampil lebih profesional,
+      meningkatkan engagement, dan menarik lebih banyak customer.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/6282298707284" class="btn-solid" target="_blank" rel="noopener">💬 Konsultasi Gratis</a>
+      <a href="#pricing" class="btn-outline">Lihat Paket →</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img
+      src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&auto=format&fit=crop&q=80"
+      alt="Social media management"
+    />
+    <div class="hero-float">
+      <span>🚀</span>Brand Lebih Pro
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 2. PROBLEM → SOLUSI ══════════════ -->
+<section id="problem">
+  <div>
+    <div class="tag">✦ Kamu Mungkin Merasakan Ini</div>
+    <h2 class="sec-title">Capek Ngurus Sosial<br><span class="y">Media Sendiri?</span></h2>
+    <ul class="problem-list">
+      <li>
+        <span class="p-icon">😩</span>
+        <div>
+          <span class="p-li-title">Tidak sempat buat konten?</span>
+          <span class="p-li-sub">Waktu habis urus bisnis, konten terbengkalai</span>
+        </div>
+      </li>
+      <li>
+        <span class="p-icon">🎨</span>
+        <div>
+          <span class="p-li-title">Design kurang menarik?</span>
+          <span class="p-li-sub">Visual asal-asalan bikin brand tidak dipercaya</span>
+        </div>
+      </li>
+      <li>
+        <span class="p-icon">📉</span>
+        <div>
+          <span class="p-li-title">Engagement stuck?</span>
+          <span class="p-li-sub">Posting tiap hari tapi reach dan like nggak naik</span>
+        </div>
+      </li>
     </ul>
-  </nav>
+  </div>
+  <div>
+    <div class="sol-box">
+      <h3>💡 Solusi Kami</h3>
+      <p>
+        Kami bantu dari <strong>nol sampai jalan</strong> — dari desain, konten, sampai strategi.
+        Kamu fokus ke bisnis, kami yang urus tampilannya bersama tim profesional berpengalaman.
+      </p>
+    </div>
+    <div class="stats-mini">
+      <div class="stat-box"><strong>100+</strong><span>Client Puas</span></div>
+      <div class="stat-box"><strong>3×</strong><span>Rata-rata Growth</span></div>
+      <div class="stat-box"><strong>24h</strong><span>Response Time</span></div>
+      <div class="stat-box"><strong>2yr+</strong><span>Pengalaman</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section id="home">
+<!-- ══════════════ 3. HASIL ══════════════ -->
+<section id="hasil">
+  <div class="tag">✦ Manfaat Nyata</div>
+  <h2 class="sec-title">Apa yang Akan Kamu <span class="y">Dapatkan?</span></h2>
+  <p class="sec-desc">Bukan sekadar konten — tapi hasil yang benar-benar menggerakkan bisnis kamu.</p>
+  <div class="hasil-grid">
+    <div class="h-card">
+      <div class="ic">💎</div>
+      <h3>Branding Lebih Profesional</h3>
+      <p>Tampil konsisten &amp; berkelas di mata calon customer</p>
+    </div>
+    <div class="h-card">
+      <div class="ic">📈</div>
+      <h3>Engagement Meningkat</h3>
+      <p>Konten yang relevan mendorong like, komentar &amp; share</p>
+    </div>
+    <div class="h-card">
+      <div class="ic">🗓️</div>
+      <h3>Konten Lebih Konsisten</h3>
+      <p>Posting terjadwal tanpa kamu perlu mikir setiap hari</p>
+    </div>
+    <div class="h-card">
+      <div class="ic">💰</div>
+      <h3>Peluang Penjualan Lebih Besar</h3>
+      <p>Visual kuat = kepercayaan tinggi = konversi meningkat</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 4. SERVICES ══════════════ -->
+<section id="services">
+  <div class="svc-wrap">
     <div>
-      <div class="hero-badge">✦ Creative Agency</div>
-      <h1 class="hero-title">Zalstudio<br><span class="accent">Creative Agency</span></h1>
-      <p class="hero-sub">Solusi Desain Kreatif untuk Bisnis Kamu — tampil profesional, berkesan, dan relevan di era digital.</p>
-      <a href="https://wa.me/6282298707284" class="btn-primary" target="_blank" rel="noopener">Order Sekarang →</a>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <div class="section-tag">✦ Karya Kami</div>
-    <h2 class="section-title">Portfolio<br><span style="color:var(--yellow)">Terpilih</span></h2>
-    <p class="section-desc">Hasil kerja nyata yang telah membantu brand berkembang lewat visual yang kuat dan konsisten.</p>
-
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_2_goyxop.png" alt="Portfolio 1" loading="lazy"/>
-      </div>
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_3_qietg9.png" alt="Portfolio 2" loading="lazy"/>
-      </div>
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_1_c3ea01.png" alt="Portfolio 3" loading="lazy"/>
-      </div>
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_1_c3ea01.png" alt="Portfolio 4" loading="lazy"/>
-      </div>
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_2_goyxop.png" alt="Portfolio 5" loading="lazy"/>
-      </div>
-      <div class="portfolio-card">
-        <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_3_qietg9.png" alt="Portfolio 6" loading="lazy"/>
+      <div class="tag">✦ Layanan Kami</div>
+      <h2 class="sec-title" style="margin-bottom:40px">Semua yang<br><span class="y">Kamu Butuhkan</span></h2>
+      <div class="svc-list">
+        <div class="svc-item">
+          <div class="svc-num">01</div>
+          <div class="svc-info">
+            <h3>📱 Social Media Management</h3>
+            <p>Kelola akun sosial media dari A–Z: konten, jadwal, caption, hingga laporan performa</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">02</div>
+          <div class="svc-info">
+            <h3>🎨 Design Konten</h3>
+            <p>Feed Instagram, Story, Reels thumbnail, flyer promosi — semua estetik &amp; on-brand</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">03</div>
+          <div class="svc-info">
+            <h3>🏷️ Branding Design</h3>
+            <p>Logo, color palette, brand guideline — identitas visual yang kuat &amp; mudah diingat</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="section-tag">✦ Paket Harga</div>
-    <h2 class="section-title">Pilih Paket<br><span style="color:var(--yellow)">Terbaik Kamu</span></h2>
-    <p class="section-desc">Transparan, terjangkau, dan dirancang untuk hasil maksimal bagi bisnis kamu.</p>
-
-    <div class="pricing-grid">
-
-      <!-- BRONZE -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="price-icon">🥉</span>
-          <div class="price-tier">Bronze</div>
-          <div class="price-amount"><sub>Rp</sub>300K<small>/bln</small></div>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="chk">✓</span> 6 Feed Instagram</li>
-            <li><span class="chk">✓</span> Caption Profesional</li>
-            <li><span class="chk">✓</span> Riset Hashtag</li>
-            <li><span class="chk">✓</span> Autopost Terjadwal</li>
-          </ul>
-          <a href="https://wa.me/6282298707284" class="price-cta" target="_blank" rel="noopener">Pilih Bronze →</a>
-        </div>
-      </div>
-
-      <!-- SILVER -->
-      <div class="price-card featured">
-        <div class="price-header">
-          <div class="featured-badge">⭐ Paling Populer</div>
-          <span class="price-icon">🥈</span>
-          <div class="price-tier">Silver</div>
-          <div class="price-amount"><sub>Rp</sub>600K<small>/bln</small></div>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="chk">✓</span> 12 Feed Instagram</li>
-            <li><span class="chk">✓</span> 6 Story</li>
-            <li><span class="chk">✓</span> Caption + CTA</li>
-            <li><span class="chk">✓</span> Branding Visual</li>
-            <li><span class="chk">✓</span> Autopost Terjadwal</li>
-          </ul>
-          <a href="https://wa.me/6282298707284" class="price-cta" target="_blank" rel="noopener">Pilih Silver →</a>
-        </div>
-      </div>
-
-      <!-- GOLD -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="price-icon">🥇</span>
-          <div class="price-tier">Gold</div>
-          <div class="price-amount"><sub>Rp</sub>1JT<small>/bln</small></div>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="chk">✓</span> 20 Feed Instagram</li>
-            <li><span class="chk">✓</span> 12 Story</li>
-            <li><span class="chk">✓</span> Copywriting Premium</li>
-            <li><span class="chk">✓</span> Kalender Konten</li>
-            <li><span class="chk">✓</span> Sesi Konsultasi</li>
-          </ul>
-          <a href="https://wa.me/6282298707284" class="price-cta" target="_blank" rel="noopener">Pilih Gold →</a>
-        </div>
-      </div>
-
+    <div class="svc-img">
+      <img
+        src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=900&auto=format&fit=crop&q=80"
+        alt="Design services"
+      />
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section id="cta">
-    <div class="section-tag" style="text-align:center">✦ Mulai Sekarang</div>
-    <h2 class="cta-title">Siap meningkatkan visual<br><span class="accent">bisnis kamu?</span></h2>
-    <p class="cta-sub">Hubungi kami sekarang dan dapatkan konsultasi gratis bersama tim kreatif Zalstudio.</p>
+<!-- ══════════════ 5. PORTFOLIO ══════════════ -->
+<section id="portfolio">
+  <div class="tag">✦ Hasil Karya</div>
+  <h2 class="sec-title">Hasil Karya <span class="y">Kami</span></h2>
+  <p class="sec-desc">Design yang tidak hanya bagus, tapi juga membantu brand lebih dipercaya dan dikenal.</p>
+
+  <div class="port-grid">
+    <div class="pc wide">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80" alt="Portfolio — Brand Strategy"/>
+    </div>
+    <div class="pc">
+      <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_2_goyxop.png" alt="Portfolio — Social Media"/>
+    </div>
+    <div class="pc">
+      <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_3_qietg9.png" alt="Portfolio — Feed Design"/>
+    </div>
+    <div class="pc">
+      <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_1_c3ea01.png" alt="Portfolio — Content"/>
+    </div>
+    <div class="pc">
+      <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_2_goyxop.png" alt="Portfolio — Campaign"/>
+    </div>
+    <div class="pc">
+      <img src="https://res.cloudinary.com/dcaisjtuc/image/upload/v1776306465/kelola_sosial_media_3_qietg9.png" alt="Portfolio — Branding"/>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 6. PRICING ══════════════ -->
+<section id="pricing">
+  <div class="tag">✦ Paket Harga</div>
+  <h2 class="sec-title">Pilih Paket Sesuai <span class="y">Kebutuhan</span></h2>
+  <p class="sec-desc">Transparan, terjangkau, dan dirancang untuk hasil maksimal bagi bisnis kamu.</p>
+
+  <div class="pri-grid">
+
+    <!-- BASIC -->
+    <div class="pri-card">
+      <div class="pri-head">
+        <span class="pri-icon">⚡</span>
+        <div class="pri-tier">Basic</div>
+        <div class="pri-price"><sub>Rp</sub>300K<small>/bln</small></div>
+      </div>
+      <div class="pri-body">
+        <ul class="pri-feats">
+          <li><span class="chk">✓</span> 12 Konten / Bulan</li>
+          <li><span class="chk">✓</span> Design Standard</li>
+          <li><span class="chk">✓</span> Caption Singkat</li>
+          <li><span class="chk">✓</span> Autopost Terjadwal</li>
+        </ul>
+        <a href="https://wa.me/6282298707284" class="pri-cta" target="_blank" rel="noopener">Pilih Basic →</a>
+      </div>
+    </div>
+
+    <!-- STANDARD (featured) -->
+    <div class="pri-card feat">
+      <div class="pri-head">
+        <div class="feat-badge">⭐ Paling Populer</div>
+        <span class="pri-icon">🔥</span>
+        <div class="pri-tier">Standard</div>
+        <div class="pri-price"><sub>Rp</sub>600K<small>/bln</small></div>
+      </div>
+      <div class="pri-body">
+        <ul class="pri-feats">
+          <li><span class="chk">✓</span> 20 Konten / Bulan</li>
+          <li><span class="chk">✓</span> Design Premium</li>
+          <li><span class="chk">✓</span> Caption + CTA</li>
+          <li><span class="chk">✓</span> Branding Visual</li>
+          <li><span class="chk">✓</span> Autopost Terjadwal</li>
+        </ul>
+        <a href="https://wa.me/6282298707284" class="pri-cta" target="_blank" rel="noopener">Pilih Standard →</a>
+      </div>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="pri-card">
+      <div class="pri-head">
+        <span class="pri-icon">👑</span>
+        <div class="pri-tier">Premium</div>
+        <div class="pri-price"><sub>Rp</sub>1JT<small>/bln</small></div>
+      </div>
+      <div class="pri-body">
+        <ul class="pri-feats">
+          <li><span class="chk">✓</span> 30 Konten / Bulan</li>
+          <li><span class="chk">✓</span> Full Management</li>
+          <li><span class="chk">✓</span> Strategi Konten</li>
+          <li><span class="chk">✓</span> Copywriting Premium</li>
+          <li><span class="chk">✓</span> Laporan Bulanan</li>
+        </ul>
+        <a href="https://wa.me/6282298707284" class="pri-cta" target="_blank" rel="noopener">Pilih Premium →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 7. TESTIMONI ══════════════ -->
+<section id="testimoni">
+  <div class="tag">✦ Testimoni</div>
+  <h2 class="sec-title">Apa Kata <span class="y">Client Kami</span></h2>
+  <p class="sec-desc">Kepercayaan client adalah motivasi terbesar kami.</p>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Design-nya bikin brand saya lebih profesional dan dipercaya. Banyak customer yang tanya pakai jasa siapa — langsung saya rekomendasiin Zalstudio!"</p>
+      <div class="testi-author">
+        <div class="t-avatar">R</div>
+        <div><div class="t-name">Rina Aulia</div><div class="t-role">Owner UMKM Fashion — Banda Aceh</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Engagement naik signifikan setelah pakai jasa ini. Feed Instagram jadi lebih rapi dan konsisten, orderan dari IG juga mulai berdatangan!"</p>
+      <div class="testi-author">
+        <div class="t-avatar">D</div>
+        <div><div class="t-name">Dian Pratama</div><div class="t-role">Owner Bisnis Kuliner — Medan</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Tim-nya fast response dan mau revisi sampai puas. Hasilnya melebihi ekspektasi, branding saya sekarang terlihat jauh lebih premium."</p>
+      <div class="testi-author">
+        <div class="t-avatar">F</div>
+        <div><div class="t-name">Fajar Hidayat</div><div class="t-role">Personal Brand — Content Creator</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Zalstudio bantu dari nol, sekarang sosial media saya sudah jalan sendiri dengan konten yang keren dan konsisten setiap harinya!"</p>
+      <div class="testi-author">
+        <div class="t-avatar">S</div>
+        <div><div class="t-name">Siti Rahma</div><div class="t-role">UMKM Skincare — Jakarta</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8. KEUNGGULAN ══════════════ -->
+<section id="keunggulan">
+  <div class="tag">✦ Kenapa Kami</div>
+  <h2 class="sec-title">Kenapa Pilih <span class="y">Kami?</span></h2>
+  <p class="sec-desc">Bukan sekadar agency biasa — kami partner pertumbuhan bisnis kamu.</p>
+
+  <div class="keung-grid">
+    <div class="k-card"><div class="ic">⚡</div><h3>Fast Response</h3><p>Pertanyaan & revisi direspons cepat, tidak bikin nunggu lama</p></div>
+    <div class="k-card"><div class="ic">✨</div><h3>Design Modern</h3><p>Visual mengikuti tren terkini yang relevan untuk brand kamu</p></div>
+    <div class="k-card"><div class="ic">🎯</div><h3>Fokus ke Hasil</h3><p>Setiap keputusan desain &amp; konten punya tujuan yang terukur</p></div>
+    <div class="k-card"><div class="ic">🔄</div><h3>Bisa Revisi</h3><p>Tidak puas? Kami revisi sampai kamu benar-benar happy</p></div>
+  </div>
+</section>
+
+<!-- ══════════════ 9. CTA FINAL ══════════════ -->
+<section id="cta-final">
+  <div class="tag">✦ Mulai Sekarang</div>
+  <h2 class="cta-title">Siap Naikkan Level<br><span class="y">Brand Kamu?</span></h2>
+  <p class="cta-sub">
+    Jangan biarkan sosial media kamu terlihat biasa saja.<br>
+    Satu langkah kecil hari ini bisa mengubah brand kamu selamanya.
+  </p>
+  <div class="cta-btns">
+    <a href="https://wa.me/6282298707284" class="btn-solid" style="font-size:1rem;padding:16px 36px;" target="_blank" rel="noopener">
+      💬 Konsultasi Gratis Sekarang
+    </a>
     <a href="https://wa.me/6282298707284" class="btn-wa" target="_blank" rel="noopener">
       <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
       </svg>
       Chat WhatsApp
     </a>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 <strong>Zalstudio. Creative Agency</strong> — All rights reserved.</p>
-  </footer>
+<footer>
+  <p>© 2025 <strong>Zalstudio. Creative Agency</strong> — Semua hak dilindungi.</p>
+</footer>
 
 </body>
 </html>
